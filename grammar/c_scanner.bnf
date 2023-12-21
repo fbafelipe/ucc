@@ -1,0 +1,102 @@
+ignore <COMMENT> ::= "(/\*([^\*]|(\*+[^\*/]))*\*+/)|(//[^\n]*)";
+
+<AUTO> ::= "auto";
+<BREAK> ::= "break";
+<CASE> ::= "case";
+<CHAR> ::= "char";
+<CONST> ::= "const";
+<CONTINUE> ::= "continue";
+<DEFAULT> ::= "default";
+<DO> ::= "do";
+<DOUBLE> ::= "double";
+<ELSE> ::= "else";
+<ENUM> ::= "enum";
+<EXTERN> ::= "extern";
+<FLOAT> ::= "float";
+<FOR> ::= "for";
+<GOTO> ::= "goto";
+<IF> ::= "if";
+<INT> ::= "int";
+<LONG> ::= "long";
+<REGISTER> ::= "register";
+<RETURN> ::= "return";
+<SHORT> ::= "short";
+<SIGNED> ::= "signed";
+<SIZEOF> ::= "sizeof";
+<STATIC> ::= "static";
+<STRUCT> ::= "struct";
+<SWITCH> ::= "switch";
+<TYPEDEF> ::= "typedef";
+<UNION> ::= "union";
+<UNSIGNED> ::= "unsigned";
+<VOID> ::= "void";
+<VOLATILE> ::= "volatile";
+<WHILE> ::= "while";
+
+<IDENTIFIER> ::= "\w(\w|\d)*";
+
+// since the IDENTIFIER has a higher priority, TYPE_NAME will never be parsed
+// this token only exists for allowing deriving Scanner and generating it by force
+// when a typedef was generated
+<TYPE_NAME> ::= "\w(\w|\d)*";
+
+<CONSTANT> ::= "0[xX](\h|\H)+(u|U|l|L)?";
+<CONSTANT> ::= "\d+(u|U|l|L)?";
+<CONSTANT> ::= "\'([^\\\']|\\.)+\'";
+
+<CONSTANT> ::= "\d+[eE][\+-]?\d+(f|F|l|L)?";
+<CONSTANT> ::= "\d+\.\d*([eE][\+-]?)?\d+(f|F|l|L)?";
+<CONSTANT> ::= "\d*\.\d+([eE][\+-]?)?\d+(f|F|l|L)?";
+
+<STRING_LITERAL> ::= "\"([^\\\"]|\\.)*\"";
+
+<ELLIPSIS> ::= "\.\.\.";
+<RIGHT_ASSIGN> ::= ">>=";
+<LEFT_ASSIGN> ::= "<<=";
+<ADD_ASSIGN> ::= "\+=";
+<SUB_ASSIGN> ::= "-=";
+<MUL_ASSIGN> ::= "\*=";
+<DIV_ASSIGN> ::= "/=";
+<MOD_ASSIGN> ::= "%=";
+<AND_ASSIGN> ::= "&=";
+<XOR_ASSIGN> ::= "\^=";
+<OR_ASSIGN> ::= "\|=";
+
+<RIGHT_OP> ::= ">>";
+<LEFT_OP> ::= "<<";
+<INC_OP> ::= "\+\+";
+<DEC_OP> ::= "--";
+<PTR_OP> ::= "->";
+<AND_OP> ::= "&&";
+<OR_OP> ::= "\|\|";
+<LE_OP> ::= "<=";
+<GE_OP> ::= ">=";
+<EQ_OP> ::= "==";
+<NE_OP> ::= "!=";
+
+<INST_END> ::= ";";
+<BEGIN> ::= "{";
+<END> ::= "}";
+<COMMA> ::= ",";
+<COLUMN> ::= ":";
+<EQ> ::= "=";
+<P_OPEN> ::= "\(";
+<P_CLOSE> ::= "\)";
+<B_OPEN> ::= "\[|<:";
+<B_CLOSE> ::= "\]|:>";
+<DOT> ::= "\.";
+<AND> ::= "&";
+<NOT> ::= "!";
+<NEG> ::= "~";
+<LESS_SIG> ::= "-";
+<PLUS_SIG> ::= "\+";
+<MUL> ::= "\*";
+<DIV> ::= "/";
+<MOD> ::= "%";
+<LESS> ::= "<";
+<GREATER> ::= ">";
+<XOR> ::= "\^";
+<OR> ::= "\|";
+<QUESTION> ::= "\?";
+
+ignore <WHITESPACE> ::= "\s+";

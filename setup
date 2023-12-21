@@ -1,0 +1,27 @@
+#!/bin/bash
+
+echo "Generating parsing tables..."
+cd grammar
+chmod +x generate
+./generate >& /dev/null
+if [ $? -ne 0 ]; then
+	echo "Error";
+	exit -1;
+fi
+cd ..
+
+cd build
+echo "Running CMake..."
+cmake .. >& /dev/null
+if [ $? -ne 0 ]; then
+	echo "Error";
+	exit -1;
+fi
+echo "Compiling..."
+make >& /dev/null
+if [ $? -ne 0 ]; then
+	echo "Error";
+	exit -1;
+fi
+
+echo "Done"

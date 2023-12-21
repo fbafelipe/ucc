@@ -1,0 +1,15 @@
+<IDENTIFIER> ::= "\w(\w|\d)*";
+
+<STRING_LITERAL> ::= "\"([^\\\"]|\\.)*\"";
+
+<CONSTANT> ::= "0[xX](\h|\H)+(u|U|l|L)?";
+<CONSTANT> ::= "\d+(u|U|l|L)?";
+<CONSTANT> ::= "\'([^\\\']|\\.)+\'";
+
+<CONSTANT> ::= "\d+[eE][\+-]?\d+(f|F|l|L)?";
+<CONSTANT> ::= "\d+\.\d*([eE][\+-]?)?\d+(f|F|l|L)?";
+<CONSTANT> ::= "\d*\.\d+([eE][\+-]?)?\d+(f|F|l|L)?";
+
+ignore <WHITESPACE> ::= "[ \t\f\r]+";
+
+<TEXT> ::= "[^\w\d\"\']+";

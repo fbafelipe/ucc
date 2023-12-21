@@ -1,0 +1,52 @@
+<DEFINED> ::= "defined";
+<DEFINED_M> ::= "defined\(";
+
+<IDENTIFIER> ::= "\w(\w|\d)*";
+
+/*
+ * MACRO is a workaround becouse in the expression
+ * #define a (b) c
+ * if there is a whitespace between a and (b), it is a ordinary define
+ * if there is no whitespace, then it's a macro,
+ * as our lexer ignores whitespaces, we define the token MACRO
+ * that is an identifier with a '(' in the end
+*/
+<MACRO> ::= "\w(\w|\d)*\(";
+
+<CONSTANT> ::= "0[xX](\h|\H)+(u|U|l|L)?";
+<CONSTANT> ::= "\d+(u|U|l|L)?";
+<CONSTANT> ::= "\'([^\\\']|\\.)+\'";
+
+<CONSTANT> ::= "\d+[eE][\+-]?\d+(f|F|l|L)?";
+<CONSTANT> ::= "\d+\.\d*([eE][\+-]?)?\d+(f|F|l|L)?";
+<CONSTANT> ::= "\d*\.\d+([eE][\+-]?)?\d+(f|F|l|L)?";
+
+<COMMA> ::= ",";
+<P_OPEN> ::= "\(";
+<P_CLOSE> ::= "\)";
+
+<RIGHT_OP> ::= ">>";
+<LEFT_OP> ::= "<<";
+<AND_OP> ::= "&&";
+<OR_OP> ::= "\|\|";
+<LE_OP> ::= "<=";
+<GE_OP> ::= ">=";
+<EQ_OP> ::= "==";
+<NE_OP> ::= "!=";
+
+<AND> ::= "&";
+<NOT> ::= "!";
+<NEG> ::= "~";
+<LESS_SIG> ::= "-";
+<PLUS_SIG> ::= "\+";
+<MUL> ::= "\*";
+<DIV> ::= "/";
+<MOD> ::= "%";
+<LESS> ::= "<";
+<GREATER> ::= ">";
+<XOR> ::= "\^";
+<OR> ::= "\|";
+<COLUMN> ::= ":";
+<QUESTION> ::= "\?";
+
+ignore <WHITESPACE> ::= "\s+";

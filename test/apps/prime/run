@@ -1,0 +1,6 @@
+#!/bin/bash
+
+CMD="../../../build/ucc prime.vm $@"
+echo $CMD
+$CMD
+

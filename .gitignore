@@ -1,0 +1,4 @@
+**/.idea
+/build
+/test/build
+/cmake-build-*

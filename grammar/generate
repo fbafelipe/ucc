@@ -1,0 +1,47 @@
+#!/bin/bash
+
+PARSERGEN="../../libparser/build/parsergen";
+OUTPUT_FOLDER=src
+
+C_PARSER=$OUTPUT_FOLDER/CParserBuffer
+PREPROCESSOR_PARSER=$OUTPUT_FOLDER/PreprocessorParserBuffer
+PREPROCESSOR_MACRO_ID_SCANNER=$OUTPUT_FOLDER/PreprocessorMacroIdScannerBuffer
+PREPROC_EXP_PARSER=$OUTPUT_FOLDER/PreprocExpParserBuffer
+UCC_ASM=$OUTPUT_FOLDER/UccAsmBuffer
+
+echo "Generating C parser..."
+CMD="$PARSERGEN -s c_scanner.bnf -p c_parser.bnf -t SLR1 -o $C_PARSER -v c_parser_buffer"
+if [ $SHOWCMD ]; then
+	echo $CMD;
+fi
+$CMD
+
+echo "Generating Preprocessor parser..."
+CMD="$PARSERGEN -s preproc_scanner.bnf -p preproc_parser.bnf -t SLR1 -o $PREPROCESSOR_PARSER -v preprocessor_parser_buffer"
+if [ $SHOWCMD ]; then
+	echo $CMD;
+fi
+$CMD
+
+echo "Generating Preprocessor macro id automata..."
+CMD="$PARSERGEN -s preproc_macro_id_scanner.bnf -o $PREPROCESSOR_MACRO_ID_SCANNER -v prepro_macro_id_buffer"
+if [ $SHOWCMD ]; then
+	echo $CMD;
+fi
+$CMD
+
+echo "Generating Preprocessor Expression parser..."
+CMD="$PARSERGEN -s preproc_exp_scanner.bnf -p preproc_exp_parser.bnf -t SLR1 -o $PREPROC_EXP_PARSER -v preproc_exp_parser_buffer"
+if [ $SHOWCMD ]; then
+	echo $CMD;
+fi
+$CMD
+
+echo "Generating Assembly parser..."
+CMD="$PARSERGEN -s ucc_asm.bnf -o $UCC_ASM -v ucc_asm_buffer"
+if [ $SHOWCMD ]; then
+	echo $CMD;
+fi
+$CMD
+
+echo "Done"
